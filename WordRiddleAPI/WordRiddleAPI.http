@@ -1,0 +1,6 @@
+@WordRiddleAPI_HostAddress = http://localhost:5173
+
+GET {{WordRiddleAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
