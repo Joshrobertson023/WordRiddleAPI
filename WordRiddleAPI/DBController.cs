@@ -17,6 +17,7 @@ using WordRiddleShared;
 public class DBController
 {
     private static string ConnectionString = @"User Id=ADMIN;Password=Josher152003;Data Source=(DESCRIPTION=(RETRY_COUNT=20)(RETRY_DELAY=3)(ADDRESS=(PROTOCOL=TCPS)(HOST=adb.us-ashburn-1.oraclecloud.com)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=gd119454c26aea7_joshwordledb_high.adb.oraclecloud.com))(SECURITY=(SSL_SERVER_DN_MATCH=YES)));";
+    //private static readonly string ConnectionString = Environment.GetEnvironmentVariable("ORACLE_CONN_STRING");
 
     public List<string> usernames = new List<string>(); // List of all usernames
 
