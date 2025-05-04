@@ -91,13 +91,18 @@ namespace WordRiddleAPI.Controllers
             }
         }
 
-
         [HttpPut("update-info")]
         public IActionResult UpdateUserInfo([FromBody] UpdateUserInfoDto userInfo)
         {
             try
             {
-                _dbController.updateUserInfoPublic(userInfo.username, userInfo.timeElapsed, userInfo.guesses, userInfo.score);
+                _dbController.updateUserInfoPublic(
+                    userInfo.username,
+                    userInfo.timeElapsed,
+                    userInfo.guesses,
+                    userInfo.score,
+                    userInfo.hints // ✅ new argument
+                );
                 return Ok(new { message = "User info updated successfully" });
             }
             catch (Exception ex)
@@ -105,6 +110,7 @@ namespace WordRiddleAPI.Controllers
                 return StatusCode(500, new { message = "Failed to update user info", error = ex.Message });
             }
         }
+
 
 
         [HttpPut("update-viewed-instructions")]

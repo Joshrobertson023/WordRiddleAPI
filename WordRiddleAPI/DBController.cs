@@ -194,21 +194,25 @@ public class DBController
         };
     }
 
-    public void updateUserInfoPublic(string username, string timeElapsed, int guesses, int score)
+    public void updateUserInfoPublic(string username, string timeElapsed, int guesses, int score, int hints)
     {
         using OracleConnection conn = new OracleConnection(ConnectionString);
         conn.Open();
         string query = @"UPDATE WORDLELEADERBOARD 
-                     SET time = :timeElapsed, guesses = :guesses, score = :score 
+                     SET time = :timeElapsed, guesses = :guesses, score = :score, hints = :hints 
                      WHERE username = :username";
+
         using OracleCommand cmd = new OracleCommand(query, conn);
         cmd.BindByName = true;
         cmd.Parameters.Add(new OracleParameter("timeElapsed", timeElapsed));
         cmd.Parameters.Add(new OracleParameter("guesses", guesses));
         cmd.Parameters.Add(new OracleParameter("score", score));
+        cmd.Parameters.Add(new OracleParameter("hints", hints)); // ✅ new parameter
         cmd.Parameters.Add(new OracleParameter("username", username));
+
         cmd.ExecuteNonQuery();
     }
+
 
 
     public void updateViewedInstructionsPublic(string username, int viewedInstructions)

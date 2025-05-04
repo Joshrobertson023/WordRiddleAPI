@@ -73,6 +73,7 @@ namespace WordRiddleShared
         public string timeElapsed { get; set; }
         public int guesses { get; set; }
         public int score { get; set; }
+        public int hints { get; set; }
     }
 
 
